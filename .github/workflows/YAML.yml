@@ -1,0 +1,18 @@
+name: Assignment8
+on: [push]
+jobs:
+  runs on: ubuntu -latest
+  steps:
+    - run: cd~
+    - run: git clone https://github.com/exynos360/idoft
+    - run: cd idoft
+    - run: git checkout 3e2070733b75feed680553638c57b7e6ae253e1a
+    - run: grep ,ID,, pr-data.csv | grep -v \\[ | shuf --random-source=<(while :; do echo skurra2@gmu.edu; done) | head
+    - run: cd ~
+    - run: git clone https://github.com/vojtechhabarta/typescript-generator
+    - run: cd typescript-generator
+    - run: git rev-parse HEAD
+    - run: mvn test-compile -pl typescript-generator-core -am
+    - run: mvn -pl typescript-generator-core test -Dtest=cz.habarta.typescript.generator.TaggedUnionsTest#testTaggedUnionsWithInterfaces
+    - run: mvn -pl typescript-generator-core edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=cz.habarta.typescript.generator.TaggedUnionsTest#testTaggedUnionsWithInterfaces
+    
